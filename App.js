@@ -5,7 +5,7 @@ import RouterComponent from './src/router'
 export default class App extends React.Component {
   render() {
     return (
-      <SafeAreaView style={{flex: 1}}>
+      <SafeAreaView style={{flex: 1, backgroundColor: '#485665',}}>
         <View style={styles.container}>
           <RouterComponent />
         </View>

@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import { View, SafeAreaView, Text } from 'react-native';
-import { Card, Button, Input, Divider } from 'react-native-elements'
+import { View, SafeAreaView, Text, Dimensions } from 'react-native';
+import { Card, Button, Input, Divider, Image } from 'react-native-elements'
+import { Actions } from 'react-native-router-flux'
+import styles from './styles'
+import Logo from '../../../assets/logo.png'
 
+const { width } = Dimensions.get('window')
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -11,9 +15,10 @@ class Home extends Component {
 
   render() {
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={ styles.safeView }>
             <View style={{marginTop: 25, flex: 1}}>
-                <Card 
+                <Card
+                containerStyle={styles.cardStyle} 
                 title='WELCOME TO LIB-ENGLISH'
                 >
                     <Input 
@@ -29,13 +34,17 @@ class Home extends Component {
                         containerStyle={{marginBottom: 10}}
                     />
                         <Button 
-                        title='Log in' 
+                        title='Log in'
+                        onPress={() => Actions.appScreen()}
                         />
-                            <Divider style={{marginVertical: 10}}></Divider>
+                        <Divider style={{marginVertical: 10}}></Divider>
                         <Button title='Register' />
                 </Card>
-                <View style={{ width: '100%', bottom: 0, position: 'absolute', marginBottom: 15, alignItems: 'center',}}>
-                    <Text>Created By Mehmet Serdar Tekin</Text>
+                <View style={styles.backgroundImage} >
+                    <Image source={Logo} style={{ width: width - 20, height: 175}} />
+                </View>
+                <View style={styles.createdBy}>
+                    <Text style={{color: 'white'}}>Created By Mehmet Serdar Tekin</Text>
                 </View>
             </View>
         </SafeAreaView>
